@@ -6,8 +6,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={Marek_yoga} className="Marek_yoga" />
-        <img src={Marek_walk} className="Marek_walk" />
+        <img src={Marek_yoga} className="Marek_yoga" alt="Marek_yoga" />
+        <img src={Marek_walk} className="Marek_walk" alt="Marek_walk" />
         <p>
           Marek's blog.
         </p>
