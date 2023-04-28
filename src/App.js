@@ -1,22 +1,17 @@
 import logo from './logo.svg';
+import Marek_yoga from './Marek_yoga.jpg';
+import Marek_walk from './Marek_walk.jpg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={Marek_yoga} className="Marek_yoga" alt="logo" />
+        <img src={Marek_walk} className="Marek_walk" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Marek's blog.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
