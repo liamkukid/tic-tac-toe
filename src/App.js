@@ -1,8 +1,16 @@
 import Marek_yoga from './Marek_yoga.jpg';
 import Marek_walk from './Marek_walk.jpg';
-import './App.css';
+import './App.scss';
+import MyButton from './MyButton';
+import { useState } from 'react';
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+      setCount(count + 1);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -11,6 +19,8 @@ function App() {
         <p>
           Marek's blog.
         </p>
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
       </header>
     </div>
   );
