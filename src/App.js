@@ -21,6 +21,9 @@ function App() {
         </p>
       <MyButton count={count} onClick={handleClick} />
       <MyButton count={count} onClick={handleClick} />
+      <button className="MainButton" onClick={handleClick}>
+            Clicked { count } times
+        </button>
       </header>
     </div>
   );

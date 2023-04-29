@@ -1,9 +1,9 @@
-import './Button.scss';
+import styles from './button.module.scss';
 
 function MyButton( { count, onClick}) {
 
     return(
-        <button className="Main-button" onClick={onClick}>
+        <button className={styles.MainButton} onClick={onClick}>
             Clicked { count } times
         </button>
     );

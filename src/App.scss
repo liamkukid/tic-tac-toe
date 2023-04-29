@@ -1,9 +1,11 @@
+@use  "./mixin.scss" as mixin;
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #0d1a40;
+  background-color: mixin.$color-bisque;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
