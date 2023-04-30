@@ -1,7 +1,20 @@
 import style from "./app.module.scss";
 import { useState } from "react";
 
-export default function Board() {
+export default function Game() {
+  return(
+    <div className={style.game}>
+      <div className={style.game_board}>
+        <Board />
+      </div>
+      <div className={style.game_info}>
+        <ol>{/*TODO*/}</ol>
+      </div>
+    </div>
+  );
+}
+
+function Board() {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
   const winner = calculateWinner(squares);

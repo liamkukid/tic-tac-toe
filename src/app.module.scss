@@ -22,3 +22,16 @@
 .status {
   margin-bottom: 10px;
 }
+
+.game_board {
+    background-color: aliceblue;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game_info {
+  margin-left: 20px;
+}
