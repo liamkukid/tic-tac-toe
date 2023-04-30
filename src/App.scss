@@ -1,16 +1,30 @@
-@use  "./mixin.scss" as mixin;
-
-.App {
-  text-align: center;
+code {
+  font-size: 1.2em;
 }
 
-.App-header {
-  background-color: mixin.$color-bisque;
-  min-height: 100vh;
+ul {
+  padding-left: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  padding: 0;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.game {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
 }

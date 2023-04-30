@@ -1,32 +1,34 @@
-import Marek_yoga from './Marek_yoga.jpg';
-import Marek_walk from './Marek_walk.jpg';
-import './App.scss';
-import MyButton from './MyButton';
-import { useState } from 'react';
+import style from "./app.module.scss";
+import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  function handleClick() {
-      setCount(count + 1);
-  }
-
+export default function Board() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={Marek_yoga} className="Marek_yoga" alt="Marek_yoga" />
-        <img src={Marek_walk} className="Marek_walk" alt="Marek_walk" />
-        <p>
-          Marek's blog.
-        </p>
-      <MyButton count={count} onClick={handleClick} />
-      <MyButton count={count} onClick={handleClick} />
-      <button className="MainButton" onClick={handleClick}>
-            Clicked { count } times
-        </button>
-      </header>
-    </div>
+    <>
+      <div className={style.board_row}>
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className={style.board_row}>
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className={style.board_row}>
+        <Square />
+        <Square />
+        <Square />
+      </div>
+    </>
   );
 }
 
-export default App;
+function Square() {
+  const [value, setValue] = useState(null);
+
+  function handleClick() {
+    setValue('X');
+  }
+
+  return <button className={style.square} onClick={handleClick}>{value}</button>
+}
