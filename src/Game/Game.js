@@ -29,8 +29,8 @@ export default function Game() {
   }
 
   const moves = history.map((squares, move) => {
-    if (move == currentMove) {
-      return;
+    if (move === currentMove) {
+      return <></>;
     }
     let description;
     if (move > 0) {
