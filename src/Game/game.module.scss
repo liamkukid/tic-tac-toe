@@ -1,12 +1,12 @@
 .game {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .game_info {
-    margin-left: 20px;
-  }
+  display: flex;
+  flex-direction: row;
+}
 
-  .current_move {
-    padding-inline-start: 40px;
-  }
+.game_info {
+  margin-left: 20px;
+}
+
+.current_move {
+  padding-inline-start: 40px;
+}

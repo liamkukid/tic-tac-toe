@@ -28,17 +28,17 @@ export default function Game() {
     } else {
       description = 'Go to game start';
     }
-    return(
+    return (
       <li key={move}>
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     )
   });
 
-  return(
+  return (
     <div className={style.game}>
       <div className={style.game_board}>
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay}/>
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className={style.game_info}>
         <ol>{moves}</ol>
