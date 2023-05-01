@@ -8,12 +8,12 @@ export default function Game() {
   const [currentMove, setCurrentMove] = useState(0);
   const [ascOrder, SetAscOrder] = useState(true);
   const xIsNext = currentMove % 2 === 0;
-  const currentSquares = ascOrder ? history[currentMove] : history[0];
+  const currentSquares = ascOrder ? history[currentMove] : history[history.length - 1 - currentMove];
 
   function handlePlay(nextSquares) {
     const nextHistory = ascOrder ? 
       [...history.slice(0, currentMove + 1), nextSquares] :
-      [nextSquares, ...history.slice(0, currentMove + 1)];
+      [nextSquares, ...history.slice(history.length - 1 - currentMove)];
     setCurrentMove(nextHistory.length - 1);
     setHistory(nextHistory);
   }
@@ -52,7 +52,7 @@ export default function Game() {
       </div>
       <div className={style.game_info}>
         <ToogleSwitch onToggleSwitchClick={switchOrder}/>
-        <ol className={style.move_info}>{moves}</ol>
+        <ol className={style.move_info}>{ascOrder ? moves : moves.reverse()}</ol>
         <div className={style.current_move}>
           You are at move #{currentMove}
         </div>
