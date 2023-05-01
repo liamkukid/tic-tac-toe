@@ -1,6 +1,6 @@
 {
-  "short_name": "TODO App",
-  "name": "Create TODO App",
+  "short_name": "Tic-Tac-Toe App",
+  "name": "Tic-Tac-Toe App",
   "icons": [
     {
       "src": "favicon.ico",
