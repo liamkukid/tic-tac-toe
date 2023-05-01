@@ -2,6 +2,7 @@ import style from "./game.module.scss";
 import { useState } from "react";
 import Board from "../Board/Board";
 import ToogleSwitch from "../ToggleSwitch/ToggleSwitch";
+import calculateWinner from "../functions/CalculateWinner";
 
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -28,6 +29,16 @@ export default function Game() {
     setHistory(newHistory);
   }
 
+  const winner = calculateWinner(currentSquares);
+  let status;
+  if (winner) {
+    status = 'Winner: ' + (xIsNext ? 'O' : 'X');
+  } else if (currentMove === 9) {
+    status = 'Draw';
+  } else {
+    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+  }
+
   const moves = history.map((squares, move) => {
     if (move === currentMove) {
       return <></>;
@@ -48,6 +59,7 @@ export default function Game() {
   return (
     <div className={style.game}>
       <div className={style.game_board}>
+        <div className={style.status}>{status}</div>
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className={style.game_info}>

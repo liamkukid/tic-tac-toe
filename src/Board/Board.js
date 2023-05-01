@@ -3,6 +3,7 @@ import Square from "../Square/Square";
 import calculateWinner from "../functions/CalculateWinner";
 
 export default function Board({ xIsNext, squares, onPlay }) {
+
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -17,19 +18,14 @@ export default function Board({ xIsNext, squares, onPlay }) {
   }
 
   const winner = calculateWinner(squares);
-  let status;
-  if (winner) {
-    status = 'Winner: ' + winner;
-  } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
-  }
 
   function Rows(number) {
     const rowsArr = [];
     for (let j = 0; j < 3; j++) {
       const index = number * 3 + j;
+      const isWin = winner !== null && winner?.includes(index);
       rowsArr.push(
-        <Square key={index + 3} value={squares[index]} onSquareClick={() => handleClick(index)} />
+        <Square key={index + 3} value={squares[index]} onSquareClick={() => handleClick(index)} isWin={isWin} />
       )
     }
     return rowsArr;
@@ -37,7 +33,6 @@ export default function Board({ xIsNext, squares, onPlay }) {
 
   return (
     <>
-      <div className={style.status}>{status}</div>
       {[0, 1, 2].map((_, i) => {
         return <div key={i} className={style.board_row}>{Rows(i)}</div>
       })}
