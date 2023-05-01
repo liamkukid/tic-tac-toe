@@ -1,21 +1,31 @@
 import style from "./game.module.scss";
 import { useState } from "react";
 import Board from "../Board/Board";
+import ToogleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const [ascOrder, SetAscOrder] = useState(true);
   const xIsNext = currentMove % 2 === 0;
-  const currentSquares = history[currentMove];
+  const currentSquares = ascOrder ? history[currentMove] : history[0];
 
   function handlePlay(nextSquares) {
-    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
-    setHistory(nextHistory);
+    const nextHistory = ascOrder ? 
+      [...history.slice(0, currentMove + 1), nextSquares] :
+      [nextSquares, ...history.slice(0, currentMove + 1)];
     setCurrentMove(nextHistory.length - 1);
+    setHistory(nextHistory);
   }
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
+  }
+
+  function switchOrder() {
+    SetAscOrder(!ascOrder);
+    const newHistory = history.reverse();
+    setHistory(newHistory);
   }
 
   const moves = history.map((squares, move) => {
@@ -41,7 +51,8 @@ export default function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className={style.game_info}>
-        <ol>{moves}</ol>
+        <ToogleSwitch onToggleSwitchClick={switchOrder}/>
+        <ol className={style.move_info}>{moves}</ol>
         <div className={style.current_move}>
           You are at move #{currentMove}
         </div>
