@@ -19,6 +19,9 @@ export default function Game() {
   }
 
   const moves = history.map((squares, move) => {
+    if (move == currentMove) {
+      return;
+    }
     let description;
     if (move > 0) {
       description = 'Go to move #' + move;
@@ -39,6 +42,9 @@ export default function Game() {
       </div>
       <div className={style.game_info}>
         <ol>{moves}</ol>
+        <div className={style.current_move}>
+          You are at move #{currentMove}
+        </div>
       </div>
     </div>
   );
