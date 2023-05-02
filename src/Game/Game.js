@@ -4,6 +4,13 @@ import Board from "../Board/Board";
 import ToogleSwitch from "../ToggleSwitch/ToggleSwitch";
 import calculateWinner from "../functions/CalculateWinner";
 
+class History {
+  constructor(squares, index) {
+    this.squares = squares;
+    this.index = index;
+  }
+}
+
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
@@ -11,7 +18,7 @@ export default function Game() {
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = ascOrder ? history[currentMove] : history[history.length - 1 - currentMove];
 
-  function handlePlay(nextSquares) {
+  function handlePlay(nextSquares, i) {
     const nextHistory = ascOrder ? 
       [...history.slice(0, currentMove + 1), nextSquares] :
       [nextSquares, ...history.slice(history.length - 1 - currentMove)];
