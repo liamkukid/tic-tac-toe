@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - "tic-tac-toe"
+      - "master"
 
 permissions:
   contents: read
