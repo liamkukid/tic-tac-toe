@@ -3,25 +3,19 @@ import { useState } from "react";
 import Board from "../Board/Board";
 import ToogleSwitch from "../ToggleSwitch/ToggleSwitch";
 import calculateWinner from "../functions/CalculateWinner";
-
-class History {
-  constructor(squares, index) {
-    this.squares = squares;
-    this.index = index;
-  }
-}
+import calculateLocation from "../functions/CalculateLocation";
 
 export default function Game() {
-  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [history, setHistory] = useState([{ squares: Array(9).fill(null), index: 0}]);
   const [currentMove, setCurrentMove] = useState(0);
   const [ascOrder, SetAscOrder] = useState(true);
   const xIsNext = currentMove % 2 === 0;
-  const currentSquares = ascOrder ? history[currentMove] : history[history.length - 1 - currentMove];
+  const currentSquares = ascOrder ? history[currentMove]?.squares : history[history.length - 1 - currentMove]?.squares;
 
   function handlePlay(nextSquares, i) {
     const nextHistory = ascOrder ? 
-      [...history.slice(0, currentMove + 1), nextSquares] :
-      [nextSquares, ...history.slice(history.length - 1 - currentMove)];
+      [...history.slice(0, currentMove + 1), { squares: nextSquares, index: i}] :
+      [{ squares: nextSquares, index: i}, ...history.slice(history.length - 1 - currentMove)];
     setCurrentMove(nextHistory.length - 1);
     setHistory(nextHistory);
   }
@@ -47,12 +41,9 @@ export default function Game() {
   }
 
   const moves = history.map((squares, move) => {
-    if (move === currentMove) {
-      return <></>;
-    }
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = `Go to move # ${move}; location: ${calculateLocation(history[move].index)}`;
     } else {
       description = 'Go to game start';
     }
@@ -73,7 +64,7 @@ export default function Game() {
         <ToogleSwitch onToggleSwitchClick={switchOrder}/>
         <ol className={style.move_info}>{ascOrder ? moves : moves.reverse()}</ol>
         <div className={style.current_move}>
-          You are at move #{currentMove}
+          You are at move #{currentMove + 1}
         </div>
       </div>
     </div>
