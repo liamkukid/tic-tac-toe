@@ -1,1 +1,1 @@
-# TODO test project
+# Tic-tac-toe test project
