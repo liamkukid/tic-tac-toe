@@ -1,6 +1,8 @@
+@import './styles/variables.scss';
+
 body {
   font-family: Verdana;
   margin: 20px;
   padding: 0;
-  background-color: rgb(175, 211, 226);
+  background-color: var(--light-blue);
 }

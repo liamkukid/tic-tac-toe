@@ -1,3 +1,5 @@
+@import '../styles/variables.scss';
+
 .main {
   display: flex;
   flex-direction: column;
@@ -33,7 +35,7 @@
 
 .button_move_info {
   appearance: none;
-  background-color: rgb(246, 241, 241);
+  background-color: var(--light);
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
